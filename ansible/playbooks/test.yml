@@ -1,0 +1,14 @@
+---
+
+- hosts:
+    - localhost
+  collections:
+    - rockaut.conntest
+  tasks:
+    - name: just for fun
+      ping:
+    - name: break
+      ping:
+      vars:
+        ansible_connection: rockaut.conntest.httpapi
+        ansible_network_os: rockaut.conntest.conntest

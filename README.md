@@ -1,1 +1,1 @@
-ansible-connection
+ansible-boilerplate

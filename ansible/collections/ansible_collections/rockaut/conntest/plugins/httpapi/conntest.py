@@ -50,9 +50,6 @@ CONTENT_TYPE = "application/json"
 
 class HttpApi(HttpApiBase):
     def send_request(self, data, **message_kwargs):
-        if data:
-            data = json.dumps(data)
-
         path = "/".join(
             [
                 self.get_option("root_path").rstrip("/"),

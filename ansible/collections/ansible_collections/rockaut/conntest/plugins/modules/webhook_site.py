@@ -24,7 +24,7 @@ options:
     - URI being used to execute API calls.
     required: true
     type: str
-  content:
+  data:
     description:
     - The C(content) is a query parameter that controls how descendant nodes of the
       requested data nodes in C(path) will be processed in the reply. If value is
@@ -75,7 +75,7 @@ from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection, ConnectionError
 
 
-def get(module, path=None, content=None, fields=None, output="json"):
+def get(module, path=None, data=None, output="json"):
     if path is None:
         raise ValueError("path value must be provided")
 
@@ -83,7 +83,7 @@ def get(module, path=None, content=None, fields=None, output="json"):
 
     connection = Connection(module._socket_path)
     return connection.send_request(
-        None, path=path, method="GET", accept=accept
+        data, path=path, method="POST", accept=accept
     )
 
 
@@ -92,7 +92,7 @@ def main():
     """
     argument_spec = dict(
         path=dict(required=True),
-        content=dict(required=True),
+        data=dict(required=True),
         output=dict(choices=["json"], default="json"),
     )
 

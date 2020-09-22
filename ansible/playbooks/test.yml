@@ -1,14 +1,15 @@
 ---
 
 - hosts:
-    - localhost
+    - webhook_site
   collections:
     - rockaut.conntest
+  gather_facts: no
   tasks:
-    - name: just for fun
-      ping:
-    - name: break
-      ping:
-      vars:
-        ansible_connection: rockaut.conntest.httpapi
-        ansible_network_os: rockaut.conntest.conntest
+    - name: lets try 
+      rockaut.conntest.webhook_site:
+        path: /fd09b73b-9379-4025-bbc7-96548380c4db
+        content: |
+          {
+            "whatever": "it takes!"
+          }

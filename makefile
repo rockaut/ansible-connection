@@ -10,7 +10,8 @@ create-pythonenv:
 	@python3 -m venv ${PYTHONVENV}
 	@( \
 		. ${PYTHONVENV}/bin/activate; \
-		pip install --requirement requirements.txt \
+		pip install wheel; \
+		pip install --requirement requirements.txt; \
 	)
 
 upgrade-pythonenv:
@@ -18,7 +19,8 @@ upgrade-pythonenv:
 	@python3 -m venv ${PYTHONVENV}
 	@( \
 		. ${PYTHONVENV}/bin/activate; \
-		pip install --upgrade --requirement requirements.txt \
+		pip install wheel; \
+		pip install --upgrade --requirement requirements.txt; \
 	)
 
 initialize: total-clean create-pythonenv

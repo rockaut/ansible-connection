@@ -6,6 +6,7 @@ from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
 
+import q
 
 DOCUMENTATION = """
 module: webhook_site
@@ -102,12 +103,14 @@ def main():
 
     result = {"changed": False}
 
+    response = None
     try:
         response = get(module, **module.params)
     except ConnectionError as exc:
         module.fail_json(msg=to_text(exc), code=exc.code)
 
     result.update({"response": response})
+    q(result)
 
     module.exit_json(**result)
 

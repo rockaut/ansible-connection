@@ -4,19 +4,15 @@
     - webhook_site
   collections:
     - rockaut.conntest
+    - ansible.netcommon
   gather_facts: no
+  vars:
+    whpath: "/d9828949-ac62-4a7a-9182-087da824e2c0"
   tasks:
     - name: lets try 
       rockaut.conntest.webhook_site:
-        path: /fd09b73b-9379-4025-bbc7-96548380c4db
+        path: "{{ whpath }}"
         data: >-
-          {
-            "whatever": "it takes!"
-          }
-    - name: lets try 2
-      rockaut.conntest.webhook_site:
-        path: /fd09b73b-9379-4025-bbc7-96548380c4db
-        data: |-
           {
             "whatever": "it takes!"
           }
